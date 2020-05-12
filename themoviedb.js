@@ -11,8 +11,8 @@ var theMovieDb = {};
 
 theMovieDb.common = {
     api_key: "YOUR_KEY",
-    base_uri: "http://api.themoviedb.org/3/",
-    images_uri: "http://image.tmdb.org/t/p/",
+    base_uri: "http://api.themoviedb.org/3",
+    images_uri: "http://image.tmdb.org/t/p",
     timeout: 5000,
     language: "en-US",
     generateParams: function (options) {
@@ -24,6 +24,13 @@ theMovieDb.common = {
         return options;
     },
     getImage: function (size, file) {
+        if (size.startsWith('/')) {
+            size = size.substring(1);
+        }
+        if (file.startsWith('/')) {
+            file = file.substring(1);
+        }
+
         return `${this.images_uri}/${size}/${file}`;
     },
     fetch: function (path, options) {
