@@ -23,8 +23,8 @@ theMovieDb.common = {
 
         return options;
     },
-    getImage: function (options) {
-        return this.images_uri + options.size + "/" + options.file;
+    getImage: function (size, file) {
+        return `${this.images_uri}/${size}/${file}`;
     },
     fetch: function (path, options) {
         options = options || {};
@@ -587,294 +587,148 @@ theMovieDb.lists = {
 };
 
 theMovieDb.movies = {
-    getById: function (options) {
+    getById: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}`, options);
     },
-    getAccountStates: function (options) {
+    getAccountStates: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["session_id", "id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/account_states" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/account_states`, options);
     },
-    getAccountStatesGuest: function (options) {
+    getAccountStatesGuest: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["guest_session_id", "id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/account_states" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/account_states`, options);
     },
-    getAlternativeTitles: function (options) {
+    getAlternativeTitles: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/alternative_titles" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/alternative_titles`, options);
     },
-    getChanges: function (options) {
+    getChanges: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/changes" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/changes`, options);
     },
-    getCredits: function (options) {
+    getCredits: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/credits" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/credits`, options);
     },
-    getExternalIds: function (options) {
+    getExternalIds: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/external_ids" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/external_ids`, options);
     },
-    getImages: function (options) {
+    getImages: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/images" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/images`, options);
     },
-    getKeywords: function (options) {
+    getKeywords: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/keywords" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/keywords`, options);
     },
-    getReleases: function (options) {
+    getReleases: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/release_dates" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/release_dates`, options);
     },
-    getVideos: function (options) {
+    getVideos: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/videos" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/videos`, options);
     },
-    getTranslations: function (options) {
+    getTranslations: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/translations" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/translations`, options);
     },
-    getRecommendations: function (options) {
+    getRecommendations: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/recommendations" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/recommendations`, options);
     },
-    getSimilarMovies: function (options) {
+    getSimilarMovies: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/similar" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/similar`, options);
     },
-    getReviews: function (options) {
+    getReviews: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/reviews" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/reviews`, options);
     },
-    getLists: function (options) {
+    getLists: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client({
-            url: "movie/" + options.id + "/lists" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch(`/movie/${id}/lists`, options);
     },
     getLatest: function () {
-        theMovieDb.common.client({
-            url: "movie/latest" + theMovieDb.common.generateQuery()
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch('/movie/latest');
     },
-    getUpcoming: function (options, success, error) {
+    getUpcoming: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, "", "", true);
 
-        theMovieDb.common.client({
-            url: "movie/upcoming" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch('/movie/upcoming', options);
     },
-    getNowPlaying: function (options, success, error) {
+    getNowPlaying: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, "", "", true);
 
-        theMovieDb.common.client({
-            url: "movie/now_playing" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch('movie/now_playing', options);
     },
-    getPopular: function (options, success, error) {
+    getPopular: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, "", "", true);
 
-        theMovieDb.common.client({
-            url: "movie/popular" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch('movie/popular', options);
     },
-    getTopRated: function (options, success, error) {
+    getTopRated: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, "", "", true);
 
-        theMovieDb.common.client({
-            url: "movie/top_rated" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch('movie/top_rated', options);
     },
-    rate: function (options, rate, success, error) {
+    rate: function (id, rating, options) {
         // TODO: Validate arguments
-        // theMovieDb.common.validateRequired(arguments, 4, options, ["session_id", "id"]);
+        // theMovieDb.common.validateRequired(arguments, 4, options, ["session_id || guest_session_id", "id"]);
 
-        theMovieDb.common.client({
-            method: "POST",
-            status: 201,
-            url: "movie/" + options.id + "/rating" + theMovieDb.common.generateQuery(options),
-            body: {
-                "value": rate
-            }
-        },
-            success,
-            error
-        );
+        options.method = 'post';
+        options.body = {
+            'value': rating,
+        };
+
+        return theMovieDb.common.fetch(`movie/${id}/rating`, options);
     },
-    rateGuest: function (options, rate, success, error) {
+    removeRate: function (id, options) {
         // TODO: Validate arguments
-        // theMovieDb.common.validateRequired(arguments, 4, options, ["guest_session_id", "id"]);
+        // theMovieDb.common.validateRequired(arguments, 3, options, ["session_id || guest_session_id", "id"]);
 
-        theMovieDb.common.client({
-            method: "POST",
-            status: 201,
-            url: "movie/" + options.id + "/rating" + theMovieDb.common.generateQuery(options),
-            body: {
-                "value": rate
-            }
-        },
-            success,
-            error
-        );
+        options.method = 'delete';
+
+        return theMovieDb.common.fetch(`movie/${id}/rating`, options);
     },
-    removeRate: function (options, success, error) {
-        // TODO: Validate arguments
-        // theMovieDb.common.validateRequired(arguments, 3, options, ["session_id", "id"]);
-
-
-        theMovieDb.common.client({
-            method: "DELETE",
-            status: 200,
-            url: "movie/" + options.id + "/rating" + theMovieDb.common.generateQuery(options),
-        },
-            success,
-            error
-        );
-    },
-    removeRateGuest: function (options, success, error) {
-        // TODO: Validate arguments
-        // theMovieDb.common.validateRequired(arguments, 3, options, ["guest_session_id", "id"]);
-
-
-        theMovieDb.common.client({
-            method: "DELETE",
-            status: 200,
-            url: "movie/" + options.id + "/rating" + theMovieDb.common.generateQuery(options),
-        },
-            success,
-            error
-        );
-    }
 };
 
 theMovieDb.networks = {
