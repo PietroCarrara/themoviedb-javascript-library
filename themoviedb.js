@@ -360,9 +360,13 @@ theMovieDb.discover = {
 };
 
 theMovieDb.find = {
-    getById: function (id, options) {
+    getById: function (id, externalSource, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id", "external_source"]);
+        options = options || {};
+
+        options.params = options.params || {};
+        options.params.external_source = externalSource;
 
         return theMovieDb.common.fetch(`/find/${id}`, options);
     }
