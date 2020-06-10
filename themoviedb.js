@@ -887,82 +887,62 @@ theMovieDb.reviews = {
 };
 
 theMovieDb.search = {
-    getMovie: function (options, success, error) {
+    getMovie: function (query, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/movie" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        options = options || {};
+        options.params = options.params || {};
+
+        options.params.query = query;
+
+        return theMovieDb.common.fetch("search/movie", options);
     },
-    getCollection: function (options, success, error) {
+    getCollection: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/collection" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch("search/collection", options);
     },
-    getTv: function (options, success, error) {
+    getTv: function (query, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/tv" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        options = options || {};
+        options.params = options.params || {};
+
+        options.params.query = query;
+
+        return theMovieDb.common.fetch("search/tv", options);
     },
-    getPerson: function (options, success, error) {
+    getPerson: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/person" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch("search/person", options);
     },
-    getCompany: function (options, success, error) {
+    getCompany: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/company" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch("search/company", options);
     },
-    getKeyword: function (options, success, error) {
+    getKeyword: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/keyword" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        return theMovieDb.common.fetch("search/keyword", options);
     },
-    getMulti: function (options, success, error) {
+    getMulti: function (query, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["query"]);
 
-        theMovieDb.common.client({
-            url: "search/multi" + theMovieDb.common.generateQuery(options)
-        },
-            success,
-            error
-        );
+        options = options || {};
+        options.params = options.params || {};
+
+        options.params.query = query;
+
+        return theMovieDb.common.fetch("search/multi", options);
     }
 };
 
@@ -1019,13 +999,13 @@ theMovieDb.tv = {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client(`tv/${id}/images`, options);
+        return theMovieDb.common.fetch(`tv/${id}/images`, options);
     },
     getKeywords: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client(`tv/${id}/keywords`, options);
+        return theMovieDb.common.fetch(`tv/${id}/keywords`, options);
 
     },
     getRecommendations: function (id, options) {
@@ -1056,19 +1036,19 @@ theMovieDb.tv = {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client(`tv/${id}/translations`, options);
+        return theMovieDb.common.fetch(`tv/${id}/translations`, options);
     },
     getVideos: function (id, options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, options, ["id"]);
 
-        theMovieDb.common.client(`tv/${id}/videos`, options);
+        return theMovieDb.common.fetch(`tv/${id}/videos`, options);
     },
     getAiringToday: function (options) {
         // TODO: Validate arguments
         // theMovieDb.common.validateRequired(arguments, 3, "", "", true);
 
-        theMovieDb.common.fetch('tv/airing_today', options);
+        return theMovieDb.common.fetch('tv/airing_today', options);
     },
     getLatest: function (options) {
         // TODO: Validate arguments
